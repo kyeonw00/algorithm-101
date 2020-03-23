@@ -119,7 +119,7 @@ for (auto element : phone_book) {
     for (int i = 0; i < element.size(); i++) {
         currentPhoneNumber += element[i];
 
-        if (comparisonMap[element] && currentPhoneNumber != element) {
+        if (comparisonMap[currentPhoneNumber] && currentPhoneNumber != element) {
             answer = false;
             break;
         }
@@ -140,6 +140,9 @@ using namespace std;
 bool solution(vector<string> phone_book) {
     bool answer = true;
     unordered_map<string, int> comparisonMap;
+    
+    for (auto element : phone_book)
+        comparisonMap.insert(make_pair(element, 1));
 
     for (auto element : phone_book) {
         string currentPhoneNumber = "";
@@ -147,7 +150,7 @@ bool solution(vector<string> phone_book) {
         for (int i = 0; i < element.size(); i++) {
             currentPhoneNumber += element[i];
 
-            if (comparison[element] && currentPhoneNumber != element) {
+            if (comparisonMap[currentPhoneNumber] && currentPhoneNumber != element) {
                 answer = false;
                 break;
             }
