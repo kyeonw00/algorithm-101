@@ -1,4 +1,4 @@
-# Algorithm Study #5
+# Algorithm Study #6
 
 ## Problem title: **Trucks passing the bridge**
 

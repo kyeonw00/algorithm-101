@@ -1,4 +1,4 @@
-# Algorithm Study #4
+# Algorithm Study #5
 
 ## Problem title: **Tower**
 

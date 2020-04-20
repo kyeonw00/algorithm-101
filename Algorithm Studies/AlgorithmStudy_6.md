@@ -1,4 +1,4 @@
-# Algorithm Study #6
+# Algorithm Study #7
 
 ## Problem title: **Syntax development**
 
