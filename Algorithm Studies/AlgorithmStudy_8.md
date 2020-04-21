@@ -13,7 +13,7 @@
 
 아래 그림은 위 조건을 만족하는 예를 보여줍니다. 수평으로 그려진 굵은 실선은 쇠막대기이고, 점은 레이저의 위치, 수직으로 그려진 점선 화살표는 레이저의 발사 방향입니다.
 
-![sampleImage_00](/Images/algorithmStudy_8_image_0.png)
+![sampleImage_00](Images/algorithmStudy_8_image_0.png)
 
 이러한 레이저와 쇠막대기의 배치는 다음과 같이 괄호를 이용하여 왼쪽부터 순서대로 표현할 수 있습니다.
 
