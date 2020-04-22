@@ -1,6 +1,8 @@
 # Study-Archive
 Archiving documents for what I've studied
 
+Lanauge (eng | kor)
+
 ## Basic Concept
 Read a book named 'Algorithmic Problem Solving Strategies'.
 Solving the problems every day, but also read a book for studying.
