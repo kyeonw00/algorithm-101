@@ -1,4 +1,4 @@
-# Algorithm Study #11
+# Algorithm Study #12
 
 ## Problem title: **Instant Noodle Factory**
 
