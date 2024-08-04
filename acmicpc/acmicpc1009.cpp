@@ -1,30 +1,33 @@
-#include <stdio.h>
+#include <iostream>
 
 using namespace std;
 
 int main()
 {
+    // don't sync with stdio buffer with iostream's
+    // reduces buffer size and increase handling speed
+    ios_base::sync_with_stdio(false);
+
+    // untie cin and cout flushing action
+    cin.tie(NULL);
+    cout.tie(NULL);
+
     int T;
-    int a, b, temp;
+    cin >> T;
 
-    scanf("%d", &T);
-    // cin >> T;
-
-    while (T > 0)
+    int a, b, dataAmount;
+    for (int t = 0; t < T; ++t)
     {
-        T--;
-        scanf("%d %d", &a, &b);
-        // cin >> a >> b;
-
-        temp = a;
-        for (int i = 0; i < b - 1; i++)
-            a = temp * a % 10;
+        cin >> a >> b;
         
-        if (a % 10 == 0)
-            a = 10;
-        else
-            a = a % 10;
+        dataAmount = a;
+        for (int i = 2; i <= b; ++i)
+        {
+            dataAmount = dataAmount * a % 10;
+        }
 
-        printf("%d\n", a);
+        dataAmount %= 10;
+        if (dataAmount == 0) { dataAmount = 10; }
+        cout << dataAmount << '\n';
     }
 }

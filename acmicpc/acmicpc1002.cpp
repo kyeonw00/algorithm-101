@@ -3,45 +3,79 @@
 
 using namespace std;
 
-int T;
-int x_1, y_1, r_1;
-int x_2, y_2, r_2;
+// Preface:
+//  - distance between each circles called D
+//  - sum of distance to target from each circle's center called distDeltaSum
+//  - difference of distance to target from each circle's center called distDeltaDiff
+//      - distDeltaDiff is always positive number(absolute number)
 
-int CheckIntersection(int x_1, int y_1, int r_1, int x_2, int y_2, int r_2)
+// Case 1: No intersections
+//  - When D is bigger than distDeltaSum
+//  - (or) When D is smaller than distDeltaDiff
+
+// Case 2: One intersection
+//  - When D is equals to distDeltaSum
+//  - (or) When D is equals to distDeltaDiff
+
+// Case 3: Two intersections
+//  - When D is bigger than distDeltaDiff
+//  - (and) When D is smaller than distDeltaSum
+
+// Case 4: Infinite intersections
+//  - When D is zero (positioned in same coordinates)
+//  - (and) distance to target from each circle's center are equal
+
+// represents turret's position and distance to target
+struct CoordinateInfo
 {
-    double d = sqrt(pow((x_2 - x_1), 2) + pow((y_2 - y_1), 2));
-    int diff = abs(r_1 - r_2);
-    int sum = r_1 + r_2;
+    int x, y;
+    int r; // distance to target
+};
 
-    if (d == 0 && diff == 0)
+int countIntersection(const CoordinateInfo coord1, const CoordinateInfo coord2)
+{
+    double distBetweenTurret = sqrt(pow(coord2.x - coord1.x, 2) + pow(coord2.y - coord1.y, 2));
+
+    // when the turrets are located at the same position
+    // and the range also same
+    if (distBetweenTurret == 0 && coord1.r == coord2.r)
     {
         return -1;
     }
-    else if (d > sum || d < diff)
+
+    // when the turrets are located outside or inside each other
+    // with no intersections
+    if (distBetweenTurret > (coord1.r + coord2.r) ||
+        distBetweenTurret < abs(coord1.r - coord2.r))
     {
         return 0;
     }
-    else if (d == diff || d == sum)
+
+    if (distBetweenTurret == (coord1.r + coord2.r) ||
+        distBetweenTurret == abs(coord1.r - coord2.r))
     {
         return 1;
     }
-    else
-    {
-        return 2;
-    }
+
+    return 2;
 }
 
 int main()
 {
-    int i = 0;
-    scanf("%d", &T);
+    ios_base::sync_with_stdio(true);
+    cin.tie(NULL);
+    cout.tie(NULL);
 
+    int T;
+    cin >> T;
+
+    int i = 0;
+    CoordinateInfo coord1, coord2;
     while (i < T)
     {
-        scanf("%d %d %d %d %d %d", &x_1, &y_1, &r_1, &x_2, &y_2, &r_2);
-        printf("%d\n", CheckIntersection(x_1, y_1, r_1, x_2, y_2, r_2));
+        cin >> coord1.x >> coord1.y >> coord1.r >> coord2.x >> coord2.y >> coord2.r;
+        cout << countIntersection(coord1, coord2) << '\n';
+
         i++;
     }
-
-    return 0;
 }
